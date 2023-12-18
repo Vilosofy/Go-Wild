@@ -1,2 +1,7 @@
-Skybox Referemce:
-https://sketchfab.com/3d-models/free-skybox-autumn-forest-3ba29976640c4b26a66d6cea0556b7d6#download
+References Link
+
+Skybox:
+https://sketchfab.com/3d-models/free-skybox-autumn-forest-3ba29976640c4b26a66d6cea0556b7d6
+
+Character:
+https://www.mixamo.com/#/?page=1&type=Character
