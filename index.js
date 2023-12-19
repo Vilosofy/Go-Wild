@@ -3,6 +3,8 @@ import { GLTFLoader } from "./Three JS/examples/jsm/loaders/GLTFLoader.js";
 import { FBXLoader } from "./Three JS/examples/jsm/loaders/FBXLoader.js";
 import { OrbitControls } from "./Three JS/examples/jsm/controls/OrbitControls.js";
 
+import Alpaca from "./Animals/alpaca.js"
+
 class BasicCharacterControllerProxy {
     constructor(animations) {
       this._animations = animations;
@@ -22,7 +24,7 @@ class BasicCharacterControllerProxy {
     _Init(params) {
       this._params = params;
       this._decceleration = new THREE.Vector3(-0.0005, -0.0001, -5.0);
-      this._acceleration = new THREE.Vector3(1, 0.25, 50.0);
+      this._acceleration = new THREE.Vector3(1, 0.25, 200.0);
       this._velocity = new THREE.Vector3(0, 0, 0);
       this._position = new THREE.Vector3();
   
@@ -511,7 +513,7 @@ class BasicCharacterControllerProxy {
   }
   
   
-  class ThirdPersonCameraDemo {
+  class goWild {
     constructor() {
       this._Initialize();
     }
@@ -522,7 +524,7 @@ class BasicCharacterControllerProxy {
       });
       this._threejs.outputEncoding = THREE.sRGBEncoding;
       this._threejs.shadowMap.enabled = true;
-      this._threejs.shadowMap.type = THREE.PCFSoftShadowMap;
+      this._threejs.shadowMap.type = THREE.PCFSoftShadowMap
       this._threejs.setPixelRatio(window.devicePixelRatio);
       this._threejs.setSize(window.innerWidth, window.innerHeight);
   
@@ -552,10 +554,10 @@ class BasicCharacterControllerProxy {
       light.shadow.camera.far = 500.0;
       light.shadow.camera.near = 0.5;
       light.shadow.camera.far = 500.0;
-      light.shadow.camera.left = 50;
-      light.shadow.camera.right = -50;
-      light.shadow.camera.top = 50;
-      light.shadow.camera.bottom = -50;
+      light.shadow.camera.left = 1000;
+      light.shadow.camera.right = -1000;
+      light.shadow.camera.top = 1000;
+      light.shadow.camera.bottom = -1000;
       this._scene.add(light);
   
       light = new THREE.AmbientLight(0xFFFFFF, 0.25);
@@ -568,21 +570,43 @@ class BasicCharacterControllerProxy {
         this._scene.add(skybox)
       })
   
-      const plane = new THREE.Mesh(
+
+      // Grass
+      const textureLoader = new THREE.TextureLoader()
+      const grassTexture = textureLoader.load("./Texture/grass.webp")
+
+      let plane = new THREE.Mesh(
           new THREE.PlaneGeometry(500, 500, 10, 10),
           new THREE.MeshStandardMaterial({
-              color: 0x808080,
+              map: grassTexture
             }));
       plane.castShadow = false;
       plane.receiveShadow = true;
       plane.rotation.x = -Math.PI / 2;
       this._scene.add(plane);
+      
+      // Ground
+      const groundTexture = textureLoader.load("./Texture/ground.webp")
+
+      plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(100, 100),
+        new THREE.MeshStandardMaterial({
+          map: groundTexture
+        }))
+      plane.castShadow = false;
+      plane.receiveShadow = true;
+      plane.rotation.x = -Math.PI / 2;
+      plane.position.set(0, 0.25, 0)
+      this._scene.add(plane);
+      
   
       this._mixers = [];
       this._previousRAF = null;
   
       this._LoadAnimatedModel();
       this._RAF();
+
+
     }
   
     _LoadAnimatedModel() {
@@ -636,7 +660,7 @@ class BasicCharacterControllerProxy {
   let _APP = null;
   
   window.addEventListener('DOMContentLoaded', () => {
-    _APP = new ThirdPersonCameraDemo();
+    _APP = new goWild();
   });
   
   
