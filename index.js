@@ -1,7 +1,6 @@
 import * as THREE from "./Three JS/build/three.module.js";
 import { GLTFLoader } from "./Three JS/examples/jsm/loaders/GLTFLoader.js";
 import { FBXLoader } from "./Three JS/examples/jsm/loaders/FBXLoader.js";
-import alpaca from "./alpaca.js";
 // import { OrbitControls } from "./Three JS/examples/jsm/controls/OrbitControls.js";
 
 // import alpaca from "./Animals/alpaca/alpaca.js"
@@ -49,7 +48,13 @@ class BasicCharacterController {
       this._target = fbx;
       this._params.scene.add(this._target);
 
+      // Alpaca mixer
       this._mixer = new THREE.AnimationMixer(this._target);
+      this._mixer2 = new THREE.AnimationMixer(this._target);
+      this._mixer3 = new THREE.AnimationMixer(this._target);
+      this._mixer4 = new THREE.AnimationMixer(this._target);
+
+      // Wolf mixer
 
       this._manager = new THREE.LoadingManager();
       this._manager.onLoad = () => {
@@ -597,26 +602,14 @@ class goWild {
     // Alpaca Nest
     const groundTexture = textureLoader.load("./Texture/ground.webp");
 
-    plane = new THREE.Mesh(
-      new THREE.PlaneGeometry(100, 100),
-      new THREE.MeshStandardMaterial({
-        map: groundTexture,
-      })
-    );
-    plane.castShadow = false;
-    plane.receiveShadow = true;
-    plane.rotation.x = -Math.PI / 2;
-    plane.position.set(400, 0.1, 100);
-    this._scene.add(plane);
-
-    // const fenceLoader = new GLTFLoader()
-    // fenceLoader.setPath("/Nest/")
-    // fenceLoader.load("scene.gltf", (fen) => {
-    //   const fence = fen.scene
-    //   fence.position.set(20, 0.1, 100)
-    //   fence.scale.setScalar(15)
-    //   this._scene.add(fence)
-    // })
+    const fenceLoader = new GLTFLoader()
+    fenceLoader.setPath("/Nest/")
+    fenceLoader.load("zoo-playground-3.gltf", (fen) => {
+      const fence = fen.scene
+      fence.position.set(400, 52, 100)
+      fence.scale.setScalar(100)
+      this._scene.add(fence)
+    })
 
     this._mixers = [];
     this._previousRAF = null;
@@ -624,13 +617,14 @@ class goWild {
     this._LoadAnimatedModel();
     this._RAF();
 
-    const loadAndPlayAlpaca = () => {
+    const loadAndPlayAlpaca1 = () => {
       const alpacaLoader = new GLTFLoader();
       let mixer;
 
       alpacaLoader.setPath("/Animals/alpaca/");
       alpacaLoader.load("Alpaca.gltf", (alpa) => {
         const alpaca = alpa.scene;
+        alpaca.position.set(400, 1.5, 70)
         alpaca.scale.setScalar(3)
         
         alpaca.traverse(c => {
@@ -651,7 +645,103 @@ class goWild {
       });
     }
 
-    loadAndPlayAlpaca(this._scene)
+    const loadAndPlayAlpaca2 = () => {
+      const alpacaLoader = new GLTFLoader();
+      let mixer;
+
+      alpacaLoader.setPath("/Animals/alpaca/");
+      alpacaLoader.load("Alpaca.gltf", (alpa) => {
+        const alpaca = alpa.scene;
+        alpaca.position.set(370, 1.5, 110)
+        alpaca.rotation.y = 10
+        alpaca.scale.setScalar(3)
+        
+        alpaca.traverse(c => {
+          c.castShadow = true
+        })
+        this._scene.add(alpaca);
+        mixer = new THREE.AnimationMixer(alpaca);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Eating");
+        const clip2 = THREE.AnimationClip.findByName(clips, "Idle_2");
+        const action = mixer.clipAction(clip);
+        const action2 = mixer.clipAction(clip2);
+        action.play();
+        action2.play();
+
+        this._mixer2 = mixer;
+      });
+    }
+
+    const loadAndPlayAlpaca3 = () => {
+      const alpacaLoader = new GLTFLoader();
+      let mixer;
+
+      alpacaLoader.setPath("/Animals/alpaca/");
+      alpacaLoader.load("Alpaca.gltf", (alpa) => {
+        const alpaca = alpa.scene;
+        alpaca.position.set(350, 1.5, 50)
+        alpaca.rotation.y = 20
+        alpaca.scale.setScalar(3)
+        
+        alpaca.traverse(c => {
+          c.castShadow = true
+        })
+        this._scene.add(alpaca);
+        mixer = new THREE.AnimationMixer(alpaca);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Eating");
+        const clip2 = THREE.AnimationClip.findByName(clips, "Idle_2");
+        const action = mixer.clipAction(clip);
+        const action2 = mixer.clipAction(clip2);
+        action.play();
+        action2.play();
+
+        this._mixer3 = mixer;
+      });
+    }
+
+    
+    const loadAndPlayAlpaca4 = () => {
+      const alpacaLoader = new GLTFLoader();
+      let mixer;
+
+      alpacaLoader.setPath("/Animals/alpaca/");
+      alpacaLoader.load("Alpaca.gltf", (alpa) => {
+        const alpaca = alpa.scene;
+        alpaca.position.set(300, 1.5, 70)
+        alpaca.rotation.y = 20
+        alpaca.scale.setScalar(2)
+        
+        alpaca.traverse(c => {
+          c.castShadow = true
+        })
+        this._scene.add(alpaca);
+        mixer = new THREE.AnimationMixer(alpaca);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Eating");
+        const clip2 = THREE.AnimationClip.findByName(clips, "Idle_2");
+        const action = mixer.clipAction(clip);
+        const action2 = mixer.clipAction(clip2);
+        action.play();
+        action2.play();
+
+        this._mixer4 = mixer;
+      });
+    }
+
+    loadAndPlayAlpaca1(this._scene)
+    loadAndPlayAlpaca2(this._scene)
+    loadAndPlayAlpaca3(this._scene)
+    loadAndPlayAlpaca4(this._scene)
+
+    // Wolf nest
+
+    // dst
+
   }
 
   _LoadAnimatedModel() {
@@ -702,6 +792,17 @@ class goWild {
     if(this._mixer) {
       this._mixer.update(timeElapsedS)
     }
+    if(this._mixer2) {
+      this._mixer2.update(timeElapsedS)
+    }
+    if(this._mixer3) {
+      this._mixer3.update(timeElapsedS)
+    }
+    if(this._mixer4) {
+      this._mixer4.update(timeElapsedS)
+    }
+
+
   }
 }
 
