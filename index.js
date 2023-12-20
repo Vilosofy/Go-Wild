@@ -1,6 +1,6 @@
-import * as THREE from "./Three JS/build/three.module.js";
-import { GLTFLoader } from "./Three JS/examples/jsm/loaders/GLTFLoader.js";
-import { FBXLoader } from "./Three JS/examples/jsm/loaders/FBXLoader.js";
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 // import { OrbitControls } from "./Three JS/examples/jsm/controls/OrbitControls.js";
 
 // import alpaca from "./Animals/alpaca/alpaca.js"
@@ -574,7 +574,7 @@ class goWild {
     light.shadow.camera.bottom = -1000;
     this._scene.add(light);
 
-    light = new THREE.AmbientLight(0xffffff, 0.25);
+    light = new THREE.AmbientLight(0xffffff, 2.0);
     this._scene.add(light);
 
     const skyLoader = new GLTFLoader();
@@ -634,7 +634,7 @@ class goWild {
         mixer = new THREE.AnimationMixer(alpaca);
         const clips = alpa.animations;
 
-        const clip = THREE.AnimationClip.findByName(clips, "Eating");
+        const clip = THREE.AnimationClip.findByName(clips, "Idle_Headlow");
         const clip2 = THREE.AnimationClip.findByName(clips, "Idle_2");
         const action = mixer.clipAction(clip);
         const action2 = mixer.clipAction(clip2);
@@ -739,6 +739,17 @@ class goWild {
     loadAndPlayAlpaca4(this._scene)
 
     // Wolf nest
+
+    const fenceLoaderr = new GLTFLoader()
+    fenceLoaderr.setPath("/Nest/")
+    fenceLoaderr.load("zoo-playground-2.gltf", (fens) => {
+      const fencee = fens.scene; 
+      fencee.position.set(200, 100, 30)
+      fencee.scale.setScalar(100)
+      this._scene.add(fencee)
+      // console.log(fencee)
+    })
+    
 
     // dst
 
