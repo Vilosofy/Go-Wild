@@ -1,0 +1,11 @@
+Model Information:
+* title:	New York Hot-Dog Cart
+* source:	https://sketchfab.com/3d-models/new-york-hot-dog-cart-d363905ab6db442789acf06e031e2b21
+* author:	Outlier Spa (https://sketchfab.com/outlier_spa)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "New York Hot-Dog Cart" (https://sketchfab.com/3d-models/new-york-hot-dog-cart-d363905ab6db442789acf06e031e2b21) by Outlier Spa (https://sketchfab.com/outlier_spa) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

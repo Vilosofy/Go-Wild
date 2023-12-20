@@ -1,0 +1,11 @@
+Model Information:
+* title:	Laurel Tree - Low Poly
+* source:	https://sketchfab.com/3d-models/laurel-tree-low-poly-f1a5baa9d2e24f27a98be75f23f38f35
+* author:	Alan Zimmerman (https://sketchfab.com/nenjo)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Laurel Tree - Low Poly" (https://sketchfab.com/3d-models/laurel-tree-low-poly-f1a5baa9d2e24f27a98be75f23f38f35) by Alan Zimmerman (https://sketchfab.com/nenjo) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

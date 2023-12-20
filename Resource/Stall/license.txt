@@ -1,0 +1,11 @@
+Model Information:
+* title:	London Zoo Indian Stall
+* source:	https://sketchfab.com/3d-models/london-zoo-indian-stall-118fbe3dfaeb45e78250e66fdbcb6406
+* author:	artfletch (https://sketchfab.com/artfletch)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "London Zoo Indian Stall" (https://sketchfab.com/3d-models/london-zoo-indian-stall-118fbe3dfaeb45e78250e66fdbcb6406) by artfletch (https://sketchfab.com/artfletch) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

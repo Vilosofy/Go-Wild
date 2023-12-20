@@ -2,8 +2,8 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 // import { OrbitControls } from "./Three JS/examples/jsm/controls/OrbitControls.js";
-
-// import alpaca from "./Animals/alpaca/alpaca.js"
+import { TextGeometry } from "three/addons/geometries/TextGeometry.js";
+import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 
 class BasicCharacterControllerProxy {
   constructor(animations) {
@@ -23,7 +23,7 @@ class BasicCharacterController {
   _Init(params) {
     this._params = params;
     this._decceleration = new THREE.Vector3(-0.0005, -0.0001, -5.0);
-    this._acceleration = new THREE.Vector3(1, 0.25, 500.0);
+    this._acceleration = new THREE.Vector3(1, 0.25, 200.0);
     this._velocity = new THREE.Vector3(0, 0, 0);
     this._position = new THREE.Vector3();
 
@@ -753,7 +753,7 @@ class goWild {
     loadAndPlayAlpaca3(this._scene);
     loadAndPlayAlpaca4(this._scene);
 
-    // Wolf nest
+    // Fox nest
 
     const fenceLoaderFox = new GLTFLoader();
     fenceLoaderFox.setPath("/Nest/");
@@ -774,7 +774,7 @@ class goWild {
       foxLoader.load("Fox.gltf", (alpa) => {
         const fox = alpa.scene;
         fox.position.set(150, 1.5, 200);
-        fox.scale.setScalar(5);
+        fox.scale.setScalar(3);
 
         fox.traverse((c) => {
           c.castShadow = true;
@@ -802,7 +802,7 @@ class goWild {
       foxLoader.load("Fox.gltf", (alpa) => {
         const fox = alpa.scene;
         fox.position.set(100, 1.5, 200);
-        fox.scale.setScalar(5);
+        fox.scale.setScalar(3);
         fox.rotation.y = 20;
 
         fox.traverse((c) => {
@@ -1123,7 +1123,7 @@ class goWild {
       bullLoader.setPath("/Animals/bull/");
       bullLoader.load("Bull.gltf", (alpa) => {
         const bull = alpa.scene;
-        bull.position.set(-260, 1.5, 130);
+        bull.position.set(-265, 1.5, 180);
         bull.scale.setScalar(4);
         bull.rotation.y = 20;
 
@@ -1145,11 +1145,323 @@ class goWild {
       });
     };
 
-
     loadAndPlayBull1(this._scene);
     loadAndPlayBull2(this._scene);
     loadAndPlayBull3(this._scene);
     loadAndPlayBull4(this._scene);
+
+    const fontLoader = new FontLoader()
+    const raycaster = new THREE.Raycaster()
+    const pointer = new THREE.Vector2()
+
+    fontLoader.setPath("/node_modules/three/examples/fonts/");
+    fontLoader.load("helvetiker_bold.typeface.json", (font) => {
+      const textMaterial = new THREE.MeshPhongMaterial({
+        color: 'blue',
+        emissive: "0x0000FF"
+      })
+      const textGeometry1 = new TextGeometry("Alpaca", {
+        font: font,
+        size: 12,
+        height: 5
+      });
+
+      const textGeometry2 = new TextGeometry("Fox", {
+        font: font,
+        size: 12,
+        height: 5,
+      });
+
+      const textGeometry3 = new TextGeometry("Stag", {
+        font: font,
+        size: 12,
+        height: 5,
+      });
+
+      const textGeometry4 = new TextGeometry("Bull", {
+        font: font,
+        size: 12,
+        height: 5,
+      });
+
+      const textMesh1 = new THREE.Mesh(textGeometry1, textMaterial);
+      const textMesh2 = new THREE.Mesh(textGeometry2, textMaterial);
+      const textMesh3 = new THREE.Mesh(textGeometry3, textMaterial);
+      const textMesh4 = new THREE.Mesh(textGeometry4, textMaterial);
+
+      textMesh1.position.set(350, 60, 50)
+      textMesh1.rotation.y = 11
+
+      textMesh2.position.set(150, 60, 170)
+      textMesh2.rotation.y = 10
+      
+      textMesh3.position.set(-70, 60, 230)
+      textMesh3.rotation.y = 15.5
+
+      textMesh4.position.set(-300, 60, 200)
+      textMesh4.rotation.y = 14.5
+
+      this._scene.add(textMesh1)
+      this._scene.add(textMesh2)
+      this._scene.add(textMesh3)
+      this._scene.add(textMesh4)
+
+      let isClicked = true
+      window.addEventListener("click", (event) => {
+        pointer.x = (event.clientX / window.innerWidth) * 2 - 1
+        pointer.y = -(event.clientY / window.innerHeight) * 2 + 1
+        raycaster.setFromCamera(pointer, this._camera)
+
+        const intersects = raycaster.intersectObjects([...this._scene.children, textMesh1], true)
+  
+        for(let i=0; i<intersects.length; i++) {
+          const intersectedObject = intersects[i].object
+          if(intersectedObject == textMesh1) {
+            if(isClicked) {
+              const linkUrl = "test.html"
+              window.open(linkUrl, "_blank")
+
+              isClicked = true
+            } else {
+              isClicked = false
+            }
+          }
+        }
+        
+      })
+
+      window.addEventListener("click", (event) => {
+        pointer.x = (event.clientX / window.innerWidth) * 2 - 1
+        pointer.y = -(event.clientY / window.innerHeight) * 2 + 1
+        raycaster.setFromCamera(pointer, this._camera)
+
+        const intersects = raycaster.intersectObjects([...this._scene.children, textMesh2], true)
+  
+        for(let i=0; i<intersects.length; i++) {
+          const intersectedObject = intersects[i].object
+          if(intersectedObject == textMesh2) {
+            if(isClicked) {
+              const linkUrl = "test2.html"
+              window.open(linkUrl, "_blank")
+
+              isClicked = true
+            } else {
+              isClicked = false
+            }
+          }
+        }
+        
+      })
+
+      window.addEventListener("click", (event) => {
+        pointer.x = (event.clientX / window.innerWidth) * 2 - 1
+        pointer.y = -(event.clientY / window.innerHeight) * 2 + 1
+        raycaster.setFromCamera(pointer, this._camera)
+
+        const intersects = raycaster.intersectObjects([...this._scene.children, textMesh3], true)
+  
+        for(let i=0; i<intersects.length; i++) {
+          const intersectedObject = intersects[i].object
+          if(intersectedObject == textMesh3) {
+            if(isClicked) {
+              const linkUrl = "test2.html"
+              window.open(linkUrl, "_blank")
+
+              isClicked = true
+            } else {
+              isClicked = false
+            }
+          }
+        }
+        
+      })
+
+      window.addEventListener("click", (event) => {
+        pointer.x = (event.clientX / window.innerWidth) * 2 - 1
+        pointer.y = -(event.clientY / window.innerHeight) * 2 + 1
+        raycaster.setFromCamera(pointer, this._camera)
+
+        const intersects = raycaster.intersectObjects([...this._scene.children, textMesh4], true)
+  
+        for(let i=0; i<intersects.length; i++) {
+          const intersectedObject = intersects[i].object
+          if(intersectedObject == textMesh4) {
+            if(isClicked) {
+              const linkUrl = "test2.html"
+              window.open(linkUrl, "_blank")
+
+              isClicked = true
+            } else {
+              isClicked = false
+            }
+          }
+        }
+        
+      })
+    });
+
+    // Avika Cart
+    const avikaLoader = new GLTFLoader()
+    var avika
+    avikaLoader.load("./Resource/avika/scene.gltf", (model) => {
+      avika = model.scene
+      avika.position.set(240, 0, -200)
+      avika.rotation.y = 6
+      avika.scale.setScalar(10)
+      this._scene.add(avika)
+    })
+
+    // Hot Dog Cart
+   const foodLoader = new GLTFLoader()
+   var hotDog
+   foodLoader.load("./Resource/hotDog/scene.gltf", (model) => {
+    hotDog = model.scene
+    hotDog.position.set(280, 0, -170)
+    hotDog.scale.setScalar(12)
+    hotDog.rotation.y = 3
+    this._scene.add(hotDog)
+   }) 
+   
+   // Stall
+   const stallLoader = new GLTFLoader()
+   var stall
+   stallLoader.load("./Resource/stall/scene.gltf", (model) => {
+    stall = model.scene
+    stall.position.set(-400, 0, 0)
+    stall.scale.setScalar(2)
+    stall.rotation.y = 20.5
+    this._scene.add(stall)
+   })
+
+   // Tree
+   const treeLoader = new GLTFLoader()
+   var tree
+   treeLoader.load("./Resource/tree/scene.gltf", (model) => {
+    tree = model.scene
+    tree.position.set(250, 0, 100)
+    tree.scale.setScalar(0.15)
+    this._scene.add(tree)
+   })
+   const treeLoader2 = new GLTFLoader()
+   var tree2
+   treeLoader2.load("./Resource/tree/scene.gltf", (model) => {
+    tree2 = model.scene
+    tree2.position.set(25, 0, 200)
+    tree2.scale.setScalar(0.15)
+    this._scene.add(tree2)
+   })
+   const treeLoader3 = new GLTFLoader()
+   var tree3
+   treeLoader3.load("./Resource/tree/scene.gltf", (model) => {
+    tree3 = model.scene
+    tree3.position.set(200, 0, 100)
+    tree3.scale.setScalar(0.15)
+    this._scene.add(tree3)
+   })
+   const treeLoader4 = new GLTFLoader()
+   var tree4
+   treeLoader4.load("./Resource/tree/scene.gltf", (model) => {
+    tree4 = model.scene
+    tree4.position.set(340, 0, -40)
+    tree4.scale.setScalar(0.15)
+    this._scene.add(tree4)
+   })
+   const treeLoader5 = new GLTFLoader()
+   var tree5
+   treeLoader5.load("./Resource/tree/scene.gltf", (model) => {
+    tree5 = model.scene
+    tree5.position.set(-200, 0, 200)
+    tree5.scale.setScalar(0.15)
+    this._scene.add(tree5)
+   })
+
+   // Bench
+   const benchLoader = new GLTFLoader()
+   var bench
+   benchLoader.load("./Resource/bench/scene.gltf", (model) => {
+    bench = model.scene
+    bench.position.set(320, 0, -80)
+    bench.scale.setScalar(2)
+    bench.rotation.y = 5
+    this._scene.add(bench)
+   })
+   var bench2
+   benchLoader.load("./Resource/bench/scene.gltf", (model) => {
+    bench2 = model.scene
+    bench2.position.set(310, 0, -120)
+    bench2.scale.setScalar(2)
+    bench2.rotation.y = 5.2
+    this._scene.add(bench2)
+   })
+
+   // grass
+   const grassLoader = new GLTFLoader()
+   var grass
+   grassLoader.load("./Resource/grass/scene.gltf", (model) => {
+    grass = model.scene
+    grass.position.set(200, 0, 100)
+    this._scene.add(grass)
+   })
+   const grassLoader2 = new GLTFLoader()
+   var grass2
+   grassLoader2.load("./Resource/grass/scene.gltf", (model) => {
+    grass2 = model.scene
+    grass2.position.set(25, 0, 200)
+    this._scene.add(grass2)
+   })
+   const grassLoader3 = new GLTFLoader()
+   var grass3
+   grassLoader2.load("./Resource/grass/scene.gltf", (model) => {
+    grass3 = model.scene
+    grass3.position.set(20, 0, 200)
+    this._scene.add(grass3)
+   })
+   const grassLoader4 = new GLTFLoader()
+   var grass4
+   grassLoader2.load("./Resource/grass/scene.gltf", (model) => {
+    grass4 = model.scene
+    grass4.position.set(30, 0, 200)
+    this._scene.add(grass4)
+   })
+   const grassLoader5 = new GLTFLoader()
+   var grass5
+   grassLoader5.load("./Resource/grass/scene.gltf", (model) => {
+    grass5 = model.scene
+    grass5.position.set(210, 0, 100)
+    this._scene.add(grass5)
+   })
+   const grassLoader6 = new GLTFLoader()
+   var grass6
+   grassLoader6.load("./Resource/grass/scene.gltf", (model) => {
+    grass6 = model.scene
+    grass6.position.set(250, 0, 100)
+    this._scene.add(grass6)
+   })
+   const grassLoader7 = new GLTFLoader()
+   var grass7
+   grassLoader7.load("./Resource/grass/scene.gltf", (model) => {
+    grass7 = model.scene
+    grass7.position.set(340, 0, -40)
+    this._scene.add(grass7)
+   })
+   const grassLoader8 = new GLTFLoader()
+   var grass8
+   grassLoader8.load("./Resource/grass/scene.gltf", (model) => {
+    grass8 = model.scene
+    grass8.position.set(-200, 0, 200)
+    this._scene.add(grass8)
+   })
+
+   // Playground
+   const playLoader = new GLTFLoader()
+   var playground
+   playLoader.load("./Resource/playground/scene.gltf", (model) => {
+    playground = model.scene
+    playground.position.set(0, 1.4, -400)
+    playground.scale.setScalar(15)
+    this._scene.add(playground)
+   })
+   
   }
 
   _LoadAnimatedModel() {

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Coffee Cart
+* source:	https://sketchfab.com/3d-models/coffee-cart-1a97f872c1ac4a83a0132cd749d0b2a8
+* author:	Outlier Spa (https://sketchfab.com/outlier_spa)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Coffee Cart" (https://sketchfab.com/3d-models/coffee-cart-1a97f872c1ac4a83a0132cd749d0b2a8) by Outlier Spa (https://sketchfab.com/outlier_spa) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

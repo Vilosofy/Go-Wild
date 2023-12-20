@@ -1,0 +1,11 @@
+Model Information:
+* title:	Abandoned fountain
+* source:	https://sketchfab.com/3d-models/abandoned-fountain-dd3afb367a774d3a8fb6de2c968fa443
+* author:	SL (https://sketchfab.com/low.3d)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Abandoned fountain" (https://sketchfab.com/3d-models/abandoned-fountain-dd3afb367a774d3a8fb6de2c968fa443) by SL (https://sketchfab.com/low.3d) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
