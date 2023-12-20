@@ -1,6 +1,6 @@
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
+import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 // import { OrbitControls } from "./Three JS/examples/jsm/controls/OrbitControls.js";
 
 // import alpaca from "./Animals/alpaca/alpaca.js"
@@ -55,6 +55,22 @@ class BasicCharacterController {
       this._mixer4 = new THREE.AnimationMixer(this._target);
 
       // Wolf mixer
+      this._mixerFox1 = new THREE.AnimationMixer(this._target);
+      this._mixerFox2 = new THREE.AnimationMixer(this._target);
+      this._mixerFox3 = new THREE.AnimationMixer(this._target);
+      this._mixerFox4 = new THREE.AnimationMixer(this._target);
+
+      // Stag Mixer
+      this._mixerStag1 = new THREE.AnimationMixer(this._target);
+      this._mixerStag2 = new THREE.AnimationMixer(this._target);
+      this._mixerStag3 = new THREE.AnimationMixer(this._target);
+      this._mixerStag4 = new THREE.AnimationMixer(this._target);
+
+      // Bull Mixer
+      this._mixerBull1 = new THREE.AnimationMixer(this._target);
+      this._mixerBull2 = new THREE.AnimationMixer(this._target);
+      this._mixerBull3 = new THREE.AnimationMixer(this._target);
+      this._mixerBull4 = new THREE.AnimationMixer(this._target);
 
       this._manager = new THREE.LoadingManager();
       this._manager.onLoad = () => {
@@ -602,14 +618,14 @@ class goWild {
     // Alpaca Nest
     const groundTexture = textureLoader.load("./Texture/ground.webp");
 
-    const fenceLoader = new GLTFLoader()
-    fenceLoader.setPath("/Nest/")
+    const fenceLoader = new GLTFLoader();
+    fenceLoader.setPath("/Nest/");
     fenceLoader.load("zoo-playground-3.gltf", (fen) => {
-      const fence = fen.scene
-      fence.position.set(400, 52, 100)
-      fence.scale.setScalar(100)
-      this._scene.add(fence)
-    })
+      const fence = fen.scene;
+      fence.position.set(400, 52, 100);
+      fence.scale.setScalar(100);
+      this._scene.add(fence);
+    });
 
     this._mixers = [];
     this._previousRAF = null;
@@ -624,12 +640,12 @@ class goWild {
       alpacaLoader.setPath("/Animals/alpaca/");
       alpacaLoader.load("Alpaca.gltf", (alpa) => {
         const alpaca = alpa.scene;
-        alpaca.position.set(400, 1.5, 70)
-        alpaca.scale.setScalar(3)
-        
-        alpaca.traverse(c => {
-          c.castShadow = true
-        })
+        alpaca.position.set(400, 1.5, 70);
+        alpaca.scale.setScalar(3);
+
+        alpaca.traverse((c) => {
+          c.castShadow = true;
+        });
         this._scene.add(alpaca);
         mixer = new THREE.AnimationMixer(alpaca);
         const clips = alpa.animations;
@@ -643,7 +659,7 @@ class goWild {
 
         this._mixer = mixer;
       });
-    }
+    };
 
     const loadAndPlayAlpaca2 = () => {
       const alpacaLoader = new GLTFLoader();
@@ -652,13 +668,13 @@ class goWild {
       alpacaLoader.setPath("/Animals/alpaca/");
       alpacaLoader.load("Alpaca.gltf", (alpa) => {
         const alpaca = alpa.scene;
-        alpaca.position.set(370, 1.5, 110)
-        alpaca.rotation.y = 10
-        alpaca.scale.setScalar(3)
-        
-        alpaca.traverse(c => {
-          c.castShadow = true
-        })
+        alpaca.position.set(370, 1.5, 110);
+        alpaca.rotation.y = 10;
+        alpaca.scale.setScalar(3);
+
+        alpaca.traverse((c) => {
+          c.castShadow = true;
+        });
         this._scene.add(alpaca);
         mixer = new THREE.AnimationMixer(alpaca);
         const clips = alpa.animations;
@@ -672,7 +688,7 @@ class goWild {
 
         this._mixer2 = mixer;
       });
-    }
+    };
 
     const loadAndPlayAlpaca3 = () => {
       const alpacaLoader = new GLTFLoader();
@@ -681,13 +697,13 @@ class goWild {
       alpacaLoader.setPath("/Animals/alpaca/");
       alpacaLoader.load("Alpaca.gltf", (alpa) => {
         const alpaca = alpa.scene;
-        alpaca.position.set(350, 1.5, 50)
-        alpaca.rotation.y = 20
-        alpaca.scale.setScalar(3)
-        
-        alpaca.traverse(c => {
-          c.castShadow = true
-        })
+        alpaca.position.set(350, 1.5, 50);
+        alpaca.rotation.y = 20;
+        alpaca.scale.setScalar(3);
+
+        alpaca.traverse((c) => {
+          c.castShadow = true;
+        });
         this._scene.add(alpaca);
         mixer = new THREE.AnimationMixer(alpaca);
         const clips = alpa.animations;
@@ -701,9 +717,8 @@ class goWild {
 
         this._mixer3 = mixer;
       });
-    }
+    };
 
-    
     const loadAndPlayAlpaca4 = () => {
       const alpacaLoader = new GLTFLoader();
       let mixer;
@@ -711,13 +726,13 @@ class goWild {
       alpacaLoader.setPath("/Animals/alpaca/");
       alpacaLoader.load("Alpaca.gltf", (alpa) => {
         const alpaca = alpa.scene;
-        alpaca.position.set(300, 1.5, 70)
-        alpaca.rotation.y = 20
-        alpaca.scale.setScalar(2)
-        
-        alpaca.traverse(c => {
-          c.castShadow = true
-        })
+        alpaca.position.set(300, 1.5, 70);
+        alpaca.rotation.y = 20;
+        alpaca.scale.setScalar(2);
+
+        alpaca.traverse((c) => {
+          c.castShadow = true;
+        });
         this._scene.add(alpaca);
         mixer = new THREE.AnimationMixer(alpaca);
         const clips = alpa.animations;
@@ -731,28 +746,410 @@ class goWild {
 
         this._mixer4 = mixer;
       });
-    }
+    };
 
-    loadAndPlayAlpaca1(this._scene)
-    loadAndPlayAlpaca2(this._scene)
-    loadAndPlayAlpaca3(this._scene)
-    loadAndPlayAlpaca4(this._scene)
+    loadAndPlayAlpaca1(this._scene);
+    loadAndPlayAlpaca2(this._scene);
+    loadAndPlayAlpaca3(this._scene);
+    loadAndPlayAlpaca4(this._scene);
 
     // Wolf nest
 
-    const fenceLoaderr = new GLTFLoader()
-    fenceLoaderr.setPath("/Nest/")
-    fenceLoaderr.load("zoo-playground-2.gltf", (fens) => {
-      const fencee = fens.scene; 
-      fencee.position.set(200, 100, 30)
-      fencee.scale.setScalar(100)
-      this._scene.add(fencee)
+    const fenceLoaderFox = new GLTFLoader();
+    fenceLoaderFox.setPath("/Nest/");
+    fenceLoaderFox.load("zoo-playground-3.gltf", (fens) => {
+      const fencee = fens.scene;
+      fencee.position.set(-30, 52, 250);
+      fencee.scale.setScalar(100);
+
+      this._scene.add(fencee);
       // console.log(fencee)
-    })
-    
+    });
 
-    // dst
+    const loadAndPlayFox1 = () => {
+      const foxLoader = new GLTFLoader();
+      let mixer;
 
+      foxLoader.setPath("/Animals/wolf/");
+      foxLoader.load("Fox.gltf", (alpa) => {
+        const fox = alpa.scene;
+        fox.position.set(150, 1.5, 200);
+        fox.scale.setScalar(5);
+
+        fox.traverse((c) => {
+          c.castShadow = true;
+        });
+        this._scene.add(fox);
+        mixer = new THREE.AnimationMixer(fox);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Eating");
+        // const clip2 = THREE.AnimationClip.findByName(clips, "Idle_2");
+        const action = mixer.clipAction(clip);
+        // const action2 = mixer.clipAction(clip2);
+        action.play();
+        // action2.play();
+
+        this._mixerFox1 = mixer;
+      });
+    };
+
+    const loadAndPlayFox2 = () => {
+      const foxLoader = new GLTFLoader();
+      let mixer;
+
+      foxLoader.setPath("/Animals/wolf/");
+      foxLoader.load("Fox.gltf", (alpa) => {
+        const fox = alpa.scene;
+        fox.position.set(100, 1.5, 200);
+        fox.scale.setScalar(5);
+        fox.rotation.y = 20;
+
+        fox.traverse((c) => {
+          c.castShadow = true;
+        });
+        this._scene.add(fox);
+        mixer = new THREE.AnimationMixer(fox);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Attack");
+        // const clip2 = THREE.AnimationClip.findByName(clips, "Idle_2");
+        const action = mixer.clipAction(clip);
+        // const action2 = mixer.clipAction(clip2);
+        action.play();
+        // action2.play();
+
+        this._mixerFox2 = mixer;
+      });
+    };
+
+    const loadAndPlayFox3 = () => {
+      const foxLoader = new GLTFLoader();
+      let mixer;
+
+      foxLoader.setPath("/Animals/wolf/");
+      foxLoader.load("Fox.gltf", (alpa) => {
+        const fox = alpa.scene;
+        fox.position.set(125, 1.5, 200);
+        fox.scale.setScalar(5);
+        fox.rotation.y = -20;
+
+        fox.traverse((c) => {
+          c.castShadow = true;
+        });
+        this._scene.add(fox);
+        mixer = new THREE.AnimationMixer(fox);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Attack");
+        // const clip2 = THREE.AnimationClip.findByName(clips, "Idle_2");
+        const action = mixer.clipAction(clip);
+        // const action2 = mixer.clipAction(clip2);
+        action.play();
+        // action2.play();
+
+        this._mixerFox3 = mixer;
+      });
+    };
+
+    const loadAndPlayFox4 = () => {
+      const foxLoader = new GLTFLoader();
+      let mixer;
+
+      foxLoader.setPath("/Animals/wolf/");
+      foxLoader.load("Fox.gltf", (alpa) => {
+        const fox = alpa.scene;
+        fox.position.set(125, 1.5, 150);
+        fox.scale.setScalar(5);
+        fox.rotation.y = -20;
+
+        fox.traverse((c) => {
+          c.castShadow = true;
+        });
+        this._scene.add(fox);
+        mixer = new THREE.AnimationMixer(fox);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Eating");
+        const clip2 = THREE.AnimationClip.findByName(clips, "Idle_2");
+        const action = mixer.clipAction(clip);
+        const action2 = mixer.clipAction(clip2);
+        action.play();
+        action2.play();
+
+        this._mixerFox4 = mixer;
+      });
+    };
+
+    loadAndPlayFox1(this._scene);
+    loadAndPlayFox2(this._scene);
+    loadAndPlayFox3(this._scene);
+    loadAndPlayFox4(this._scene);
+
+    // Stag Nest
+    const fenceLoaderStag = new GLTFLoader();
+    fenceLoaderStag.setPath("/Nest/");
+    fenceLoaderStag.load("zoo-playground-3.gltf", (fens) => {
+      const fencee = fens.scene;
+      fencee.position.set(200, 52, 200);
+      fencee.scale.setScalar(100);
+      this._scene.add(fencee);
+      // console.log(fencee)
+    });
+
+    const loadAndPlayStag1 = () => {
+      const stagLoader = new GLTFLoader();
+      let mixer;
+
+      stagLoader.setPath("/Animals/stag/");
+      stagLoader.load("Stag.gltf", (alpa) => {
+        const stag = alpa.scene;
+        stag.position.set(-50, 1.5, 200);
+        stag.scale.setScalar(5);
+        stag.rotation.y = -20;
+
+        stag.traverse((c) => {
+          c.castShadow = true;
+        });
+        this._scene.add(stag);
+        mixer = new THREE.AnimationMixer(stag);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Eating");
+        const clip2 = THREE.AnimationClip.findByName(clips, "Idle_2");
+        const action = mixer.clipAction(clip);
+        const action2 = mixer.clipAction(clip2);
+        action.play();
+        action2.play();
+
+        this._mixerStag1 = mixer;
+      });
+    };
+
+    const loadAndPlayStag2 = () => {
+      const stagLoader = new GLTFLoader();
+      let mixer;
+
+      stagLoader.setPath("/Animals/stag/");
+      stagLoader.load("Stag.gltf", (alpa) => {
+        const stag = alpa.scene;
+        stag.position.set(-100, 1.5, 200);
+        stag.scale.setScalar(5);
+        stag.rotation.y = 20;
+
+        stag.traverse((c) => {
+          c.castShadow = true;
+        });
+        this._scene.add(stag);
+        mixer = new THREE.AnimationMixer(stag);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Idle_Headlow");
+        const clip2 = THREE.AnimationClip.findByName(clips, "Idle_2");
+        const action = mixer.clipAction(clip);
+        const action2 = mixer.clipAction(clip2);
+        action.play();
+        action2.play();
+
+        this._mixerStag2 = mixer;
+      });
+    };
+
+    const loadAndPlayStag3 = () => {
+      const stagLoader = new GLTFLoader();
+      let mixer;
+
+      stagLoader.setPath("/Animals/stag/");
+      stagLoader.load("Stag.gltf", (alpa) => {
+        const stag = alpa.scene;
+        stag.position.set(-150, 1.5, 200);
+        stag.scale.setScalar(5);
+        stag.rotation.y = 3;
+
+        stag.traverse((c) => {
+          c.castShadow = true;
+        });
+        this._scene.add(stag);
+        mixer = new THREE.AnimationMixer(stag);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Eating");
+        // const clip2 = THREE.AnimationClip.findByName(clips, "Idle_2");
+        const action = mixer.clipAction(clip);
+        // const action2 = mixer.clipAction(clip2);
+        action.play();
+        // action2.play();
+
+        this._mixerStag3 = mixer;
+      });
+    };
+
+    const loadAndPlayStag4 = () => {
+      const stagLoader = new GLTFLoader();
+      let mixer;
+
+      stagLoader.setPath("/Animals/stag/");
+      stagLoader.load("Stag.gltf", (alpa) => {
+        const stag = alpa.scene;
+        stag.position.set(-130, 1.5, 250);
+        stag.scale.setScalar(5);
+        stag.rotation.y = 3;
+
+        stag.traverse((c) => {
+          c.castShadow = true;
+        });
+        this._scene.add(stag);
+        mixer = new THREE.AnimationMixer(stag);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Gallop_Jump");
+        // const clip2 = THREE.AnimationClip.findByName(clips, "Idle_2");
+        const action = mixer.clipAction(clip);
+        // const action2 = mixer.clipAction(clip2);
+        action.play();
+        // action2.play();
+
+        this._mixerStag4 = mixer;
+      });
+    };
+
+    loadAndPlayStag1(this._scene);
+    loadAndPlayStag2(this._scene);
+    loadAndPlayStag3(this._scene);
+    loadAndPlayStag4(this._scene);
+
+    // Bull Nest
+    const fenceLoaderBull = new GLTFLoader();
+    fenceLoaderBull.setPath("/Nest/");
+    fenceLoaderBull.load("zoo-playground-3.gltf", (fens) => {
+      const fencee = fens.scene;
+      fencee.position.set(-250, 52, 200);
+      fencee.scale.setScalar(100);
+      this._scene.add(fencee);
+      // console.log(fencee)
+    });
+
+    const loadAndPlayBull1 = () => {
+      const bullLoader = new GLTFLoader();
+      let mixer;
+
+      bullLoader.setPath("/Animals/bull/");
+      bullLoader.load("Bull.gltf", (alpa) => {
+        const bull = alpa.scene;
+        bull.position.set(-300, 3, 150);
+        bull.scale.setScalar(4);
+        bull.rotation.y = 3;
+
+        bull.traverse((c) => {
+          c.castShadow = true;
+        });
+        this._scene.add(bull);
+        mixer = new THREE.AnimationMixer(bull);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Idle");
+        const clip2 = THREE.AnimationClip.findByName(clips, "Eating");
+        const action = mixer.clipAction(clip);
+        const action2 = mixer.clipAction(clip2);
+        action.play();
+        action2.play();
+
+        this._mixerBull1 = mixer;
+      });
+    };
+
+    const loadAndPlayBull2 = () => {
+      const bullLoader = new GLTFLoader();
+      let mixer;
+
+      bullLoader.setPath("/Animals/bull/");
+      bullLoader.load("Bull.gltf", (alpa) => {
+        const bull = alpa.scene;
+        bull.position.set(-305, 2, 203);
+        bull.scale.setScalar(4);
+        bull.rotation.y = 15;
+
+        bull.traverse((c) => {
+          c.castShadow = true;
+        });
+        this._scene.add(bull);
+        mixer = new THREE.AnimationMixer(bull);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Idle");
+        const clip2 = THREE.AnimationClip.findByName(clips, "Attack_Headbutt");
+        const action = mixer.clipAction(clip);
+        const action2 = mixer.clipAction(clip2);
+        action.play();
+        action2.play();
+
+        this._mixerBull2 = mixer;
+      });
+    };
+
+    const loadAndPlayBull3 = () => {
+      const bullLoader = new GLTFLoader();
+      let mixer;
+
+      bullLoader.setPath("/Animals/bull/");
+      bullLoader.load("Bull.gltf", (alpa) => {
+        const bull = alpa.scene;
+        bull.position.set(-360, 1.5, 190);
+        bull.scale.setScalar(4);
+        bull.rotation.y = 20;
+
+        bull.traverse((c) => {
+          c.castShadow = true;
+        });
+        this._scene.add(bull);
+        mixer = new THREE.AnimationMixer(bull);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Idle_2");
+        // const clip2 = THREE.AnimationClip.findByName(clips, "Attack_Headbutt");
+        const action = mixer.clipAction(clip);
+        // const action2 = mixer.clipAction(clip2);
+        action.play();
+        // action2.play();
+
+        this._mixerBull3 = mixer;
+      });
+    };
+
+    const loadAndPlayBull4 = () => {
+      const bullLoader = new GLTFLoader();
+      let mixer;
+
+      bullLoader.setPath("/Animals/bull/");
+      bullLoader.load("Bull.gltf", (alpa) => {
+        const bull = alpa.scene;
+        bull.position.set(-260, 1.5, 130);
+        bull.scale.setScalar(4);
+        bull.rotation.y = 20;
+
+        bull.traverse((c) => {
+          c.castShadow = true;
+        });
+        this._scene.add(bull);
+        mixer = new THREE.AnimationMixer(bull);
+        const clips = alpa.animations;
+
+        const clip = THREE.AnimationClip.findByName(clips, "Idle");
+        // const clip2 = THREE.AnimationClip.findByName(clips, "Attack_Headbutt");
+        const action = mixer.clipAction(clip);
+        // const action2 = mixer.clipAction(clip2);
+        action.play();
+        // action2.play();
+
+        this._mixerBull4 = mixer;
+      });
+    };
+
+
+    loadAndPlayBull1(this._scene);
+    loadAndPlayBull2(this._scene);
+    loadAndPlayBull3(this._scene);
+    loadAndPlayBull4(this._scene);
   }
 
   _LoadAnimatedModel() {
@@ -800,20 +1197,54 @@ class goWild {
 
     this._thirdPersonCamera.Update(timeElapsedS);
 
-    if(this._mixer) {
-      this._mixer.update(timeElapsedS)
+    if (this._mixer) {
+      this._mixer.update(timeElapsedS);
     }
-    if(this._mixer2) {
-      this._mixer2.update(timeElapsedS)
+    if (this._mixer2) {
+      this._mixer2.update(timeElapsedS);
     }
-    if(this._mixer3) {
-      this._mixer3.update(timeElapsedS)
+    if (this._mixer3) {
+      this._mixer3.update(timeElapsedS);
     }
-    if(this._mixer4) {
-      this._mixer4.update(timeElapsedS)
+    if (this._mixer4) {
+      this._mixer4.update(timeElapsedS);
     }
-
-
+    if (this._mixerFox1) {
+      this._mixerFox1.update(timeElapsedS);
+    }
+    if (this._mixerFox2) {
+      this._mixerFox2.update(timeElapsedS);
+    }
+    if (this._mixerFox3) {
+      this._mixerFox3.update(timeElapsedS);
+    }
+    if (this._mixerFox4) {
+      this._mixerFox4.update(timeElapsedS);
+    }
+    if (this._mixerStag1) {
+      this._mixerStag1.update(timeElapsedS);
+    }
+    if (this._mixerStag2) {
+      this._mixerStag2.update(timeElapsedS);
+    }
+    if (this._mixerStag3) {
+      this._mixerStag3.update(timeElapsedS);
+    }
+    if (this._mixerStag4) {
+      this._mixerStag4.update(timeElapsedS);
+    }
+    if (this._mixerBull1) {
+      this._mixerBull1.update(timeElapsedS);
+    }
+    if (this._mixerBull2) {
+      this._mixerBull2.update(timeElapsedS);
+    }
+    if (this._mixerBull3) {
+      this._mixerBull3.update(timeElapsedS);
+    }
+    if (this._mixerBull4) {
+      this._mixerBull4.update(timeElapsedS);
+    }
   }
 }
 
