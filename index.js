@@ -23,7 +23,7 @@ class BasicCharacterController {
   _Init(params) {
     this._params = params;
     this._decceleration = new THREE.Vector3(-0.0005, -0.0001, -5.0);
-    this._acceleration = new THREE.Vector3(1, 0.25, 500.0);
+    this._acceleration = new THREE.Vector3(1, 0.25, 200.0);
     this._velocity = new THREE.Vector3(0, 0, 0);
     this._position = new THREE.Vector3();
 
@@ -619,7 +619,7 @@ class goWild {
     const tileTexture = textureLoader.load("./Texture/tile.jpg");
 
     const ground2 = new THREE.Mesh(
-      new THREE.PlaneGeometry(1000, 1000, 10, 10),
+      new THREE.PlaneGeometry(500, 500, 10, 10),
       new THREE.MeshStandardMaterial({
         map: tileTexture,
       })
@@ -628,7 +628,7 @@ class goWild {
     ground2.receiveShadow = true;
     ground2.rotation.x = -Math.PI / 2;
     ground2.position.set(0, 0.1, 0)
-    this._scene.add(ground2)
+    // this._scene.add(ground2)
 
     // Alpaca Nest
     const groundTexture = textureLoader.load("./Texture/ground.webp");
@@ -1256,7 +1256,7 @@ class goWild {
           const intersectedObject = intersects[i].object
           if(intersectedObject == textMesh2) {
             if(isClicked) {
-              const linkUrl = "test2.html"
+              const linkUrl = ""
               window.open(linkUrl, "_blank")
 
               isClicked = true
@@ -1279,7 +1279,7 @@ class goWild {
           const intersectedObject = intersects[i].object
           if(intersectedObject == textMesh3) {
             if(isClicked) {
-              const linkUrl = "test2.html"
+              const linkUrl = ""
               window.open(linkUrl, "_blank")
 
               isClicked = true
@@ -1302,7 +1302,7 @@ class goWild {
           const intersectedObject = intersects[i].object
           if(intersectedObject == textMesh4) {
             if(isClicked) {
-              const linkUrl = "test2.html"
+              const linkUrl = ""
               window.open(linkUrl, "_blank")
 
               isClicked = true
@@ -1320,8 +1320,8 @@ class goWild {
     var avika
     avikaLoader.load("./Resource/avika/scene.gltf", (model) => {
       avika = model.scene
-      avika.position.set(240, 0, -200)
-      avika.rotation.y = 6
+      avika.position.set(340, 0, -200)
+      avika.rotation.y = -1
       avika.scale.setScalar(10)
       this._scene.add(avika)
     })
@@ -1331,9 +1331,9 @@ class goWild {
    var hotDog
    foodLoader.load("./Resource/hotDog/scene.gltf", (model) => {
     hotDog = model.scene
-    hotDog.position.set(280, 0, -170)
+    hotDog.position.set(360, 0, -170)
     hotDog.scale.setScalar(12)
-    hotDog.rotation.y = 3
+    hotDog.rotation.y = 0.5
     this._scene.add(hotDog)
    }) 
    
@@ -1377,7 +1377,7 @@ class goWild {
    var tree4
    treeLoader4.load("./Resource/tree/scene.gltf", (model) => {
     tree4 = model.scene
-    tree4.position.set(340, 0, -40)
+    tree4.position.set(400, 0, -40)
     tree4.scale.setScalar(0.15)
     this._scene.add(tree4)
    })
@@ -1403,19 +1403,33 @@ class goWild {
     tree7.scale.setScalar(0.15)
     this._scene.add(tree7)
    })
-   var tree7
-   treeLoader5.load("./Resource/tree/scene.gltf", (model) => {
-    tree7 = model.scene
-    tree7.position.set(-300, 0, -300)
-    tree7.scale.setScalar(0.15)
-    this._scene.add(tree7)
-   })
    var tree8
    treeLoader5.load("./Resource/tree/scene.gltf", (model) => {
     tree8 = model.scene
-    tree8.position.set(-400, 0, -300)
+    tree8.position.set(-300, 0, -300)
     tree8.scale.setScalar(0.15)
     this._scene.add(tree8)
+   })
+   var tree9
+   treeLoader5.load("./Resource/tree/scene.gltf", (model) => {
+    tree9 = model.scene
+    tree9.position.set(-400, 0, -100)
+    tree9.scale.setScalar(0.15)
+    this._scene.add(tree9)
+   })
+   var tree10
+   treeLoader5.load("./Resource/tree/scene.gltf", (model) => {
+    tree10 = model.scene
+    tree10.position.set(300, 0, -230)
+    tree10.scale.setScalar(0.15)
+    this._scene.add(tree10)
+   })
+   var tree11
+   treeLoader5.load("./Resource/tree/scene.gltf", (model) => {
+    tree11 = model.scene
+    tree11.position.set(-400, 0, 80)
+    tree11.scale.setScalar(0.15)
+    this._scene.add(tree11)
    })
 
    // Bench
@@ -1423,7 +1437,7 @@ class goWild {
    var bench
    benchLoader.load("./Resource/bench/scene.gltf", (model) => {
     bench = model.scene
-    bench.position.set(320, 0, -80)
+    bench.position.set(400, 0, -80)
     bench.scale.setScalar(2)
     bench.rotation.y = 5
     this._scene.add(bench)
@@ -1431,9 +1445,9 @@ class goWild {
    var bench2
    benchLoader.load("./Resource/bench/scene.gltf", (model) => {
     bench2 = model.scene
-    bench2.position.set(310, 0, -120)
+    bench2.position.set(390, 0, -120)
     bench2.scale.setScalar(2)
-    bench2.rotation.y = 5.2
+    bench2.rotation.y = 5
     this._scene.add(bench2)
    })
    var bench3
@@ -1467,6 +1481,22 @@ class goWild {
     bench6.scale.setScalar(2)
     bench6.rotation.y = 6.5
     this._scene.add(bench6)
+   })
+   var bench7
+   benchLoader.load("./Resource/bench/scene.gltf", (model) => {
+    bench7 = model.scene
+    bench7.position.set(-230, 0, -350)
+    bench7.scale.setScalar(2)
+    bench7.rotation.y = 0.5
+    this._scene.add(bench7)
+   })
+   var bench8
+   benchLoader.load("./Resource/bench/scene.gltf", (model) => {
+    bench8 = model.scene
+    bench8.position.set(-280, 0, -350)
+    bench8.scale.setScalar(2)
+    bench8.rotation.y = 0.5
+    this._scene.add(bench8)
    })
 
    // grass
@@ -1516,7 +1546,7 @@ class goWild {
    var grass7
    grassLoader7.load("./Resource/grass/scene.gltf", (model) => {
     grass7 = model.scene
-    grass7.position.set(340, 0, -40)
+    grass7.position.set(400, 0, -40)
     this._scene.add(grass7)
    })
    const grassLoader8 = new GLTFLoader()
@@ -1537,6 +1567,30 @@ class goWild {
     grass10 = model.scene
     grass10.position.set(120, 0, -400)
     this._scene.add(grass10)
+   })
+   var grass11
+   grassLoader8.load("./Resource/grass/scene.gltf", (model) => {
+    grass11 = model.scene
+    grass11.position.set(300, 0, -230)
+    this._scene.add(grass11)
+   })
+   var grass12
+   grassLoader8.load("./Resource/grass/scene.gltf", (model) => {
+    grass12 = model.scene
+    grass12.position.set(-400, 0, 80)
+    this._scene.add(grass12)
+   })
+   var grass12
+   grassLoader8.load("./Resource/grass/scene.gltf", (model) => {
+    grass12 = model.scene
+    grass12.position.set(-400, 0, -100)
+    this._scene.add(grass12)
+   })
+   var grass13
+   grassLoader8.load("./Resource/grass/scene.gltf", (model) => {
+    grass13 = model.scene
+    grass13.position.set(-300, 0, -300)
+    this._scene.add(grass13)
    })
 
    // Playground
