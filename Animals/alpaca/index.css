@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  background-image: url("img/zoo.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  border-radius: 30px;
+  margin: 30px;
+  padding: 30px;
+  background: rgba(217, 217, 217, 0.5);
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.button-back a{
+  padding: 10px;
+  background-color: #1C6536;
+  color: white;
+}
+
+.all-heading {
+  color: black;
+  /* border: 5px green solid; */
+  /* width: 50vw; */
+  display: flex;
+  flex-direction: column;
+}
+
+.all-heading h1 {
+  font-size: 40px;
+  font-weight: 900;
+  /* border: 1px red solid; */
+
+}
+
+.heading img{
+  width: 50px;
+  height: 50px;
+}
+
+.title-head{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+.heading {
+  /* border: 10px blue solid; */
+  display: flex;
+  flex-direction: column;
+}
+
+.heading h2{
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* Habitat */
+.full-habitat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.habitat{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* 
+main{
+  width: 50vw;
+  border: 10px red solid;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+} */
+
+#container3D canvas {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 10px 10px 36.3px 0px rgba(0, 0, 0, 0.25);
+  width: 50vw !important;
+  height: 50vh !important;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  /* margin-top: 20px; */
+  border-radius: 30px;
+}
