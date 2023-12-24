@@ -1256,7 +1256,7 @@ class goWild {
           const intersectedObject = intersects[i].object
           if(intersectedObject == textMesh2) {
             if(isClicked) {
-              const linkUrl = ""
+              const linkUrl = "Animals/wolf/index.html"
               window.open(linkUrl, "_blank")
 
               isClicked = true
@@ -1279,7 +1279,7 @@ class goWild {
           const intersectedObject = intersects[i].object
           if(intersectedObject == textMesh3) {
             if(isClicked) {
-              const linkUrl = ""
+              const linkUrl = "Animals/stag/index.html"
               window.open(linkUrl, "_blank")
 
               isClicked = true
@@ -1302,7 +1302,7 @@ class goWild {
           const intersectedObject = intersects[i].object
           if(intersectedObject == textMesh4) {
             if(isClicked) {
-              const linkUrl = ""
+              const linkUrl = "Animals/bull/index.html"
               window.open(linkUrl, "_blank")
 
               isClicked = true
